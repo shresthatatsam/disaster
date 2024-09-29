@@ -1,0 +1,173 @@
+﻿@model DisasterPhotos
+<form method="post" asp-controller="Disaster" asp-action="Create" enctype="multipart/form-data">
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"> <b><u> Victim Information</u></b></legend>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name" asp-for="Name" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="age">Age:</label>
+					<input type="text" class="form-control" id="age" asp-for="Age" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+
+				<div class="form-group">
+					<label for="gender">Gender:</label>
+					<select class="form-control" id="gender" asp-for="Gender" required>
+						<option value="" disabled selected>Select Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="contactNumber">Contact Number:</label>
+					<input type="tel" class="form-control" id="contactNumber" asp-for="ContactNumber" required>
+				</div>
+			</div>
+		</div>
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Disaster Information</u></b></legend>
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="category">Category:</label>
+					<input type="text" class="form-control" id="category" asp-for="Category" required>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="severity">Severity:</label>
+					<input type="text" class="form-control" id="severity" asp-for="Severity" required>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="dateOccured">Date Occurred:</label>
+					<input type="date" class="form-control" id="dateOccured" asp-for="Date_Occured" required>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Location Information </u></b></legend>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="tole">Tole:</label>
+					<input type="text" class="form-control" id="tole" asp-for="Tole" required>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="province">Province:</label>
+					<input type="text" class="form-control" id="province" asp-for="Province" required>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="district">District:</label>
+					<input type="text" class="form-control" id="district" asp-for="District"  required>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="municipality">Municipality:</label>
+					<input type="text" class="form-control" id="municipality" asp-for="Municipality" required>
+				</div>
+			</div>
+			<div class="col-md-6">
+
+
+				<div class="form-group">
+					<label for="ward">Ward:</label>
+					<input type="text" class="form-control" id="ward" asp-for="Ward" required>
+				</div>
+			</div>
+		</div>
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Photo Information </u></b></legend>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="photoUpload">Upload Photo:</label>
+					<input type="file" class="form-control-file" id="photoUpload" asp-for="UploadedPhotos"  accept="image/*" required multiple>
+					<small class="form-text text-muted">Please upload an image file (JPG, PNG, etc.).</small>
+					<div id="imagePreviewContainer" class="mt-2"></div>
+
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<textarea class="form-control" id="description" asp-for="Description" rows="4" required></textarea>
+				</div>
+			</div>
+		</div>
+		
+	
+	</fieldset>
+
+	<button type="submit" class="btn btn-primary">Submit Report</button>
+</form>
+
+
+<script>
+	document.getElementById('photoUpload').addEventListener('change', function (event) {
+		const files = event.target.files;
+		const previewContainer = document.getElementById('imagePreviewContainer');
+		previewContainer.innerHTML = ''; // Clear previous previews
+
+		for (let i = 0; i < files.length; i++) {
+			const file = files[i];
+			const reader = new FileReader();
+
+			reader.onload = function (e) {
+				const img = document.createElement('img');
+				img.src = e.target.result;
+				img.alt = 'Image Preview';
+				img.className = 'img-thumbnail mt-2'; // Add Bootstrap styling
+				img.style.maxWidth = '100px'; // Set a max width
+				img.style.height = 'auto'; // Maintain aspect ratio
+				previewContainer.appendChild(img); // Add image to the preview container
+			}
+			reader.readAsDataURL(file); // Convert the file to a data URL
+		}
+	});
+</script>
+
