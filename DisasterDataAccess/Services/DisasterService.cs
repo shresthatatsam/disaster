@@ -45,7 +45,8 @@ namespace DisasterDataAccess.Services
                 Municipality = model.Municipality,
                 Ward = model.Ward,
                 Description = model.Description,
-                PhotoBase64 = model.PhotoBase64
+                PhotoBase64 = model.PhotoBase64,
+                Isactive=true
             };
 
             // Save the disaster entity

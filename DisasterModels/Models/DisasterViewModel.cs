@@ -33,5 +33,14 @@ namespace DisasterModels.Models
         public string Description { get; set; }
         public List<string> PhotoBase64 { get; set; } = new List<string>();
 
+        //Extras
+        public DateTime created_at { get; set; }
+        public DateTime? updated_at { get; set; }
+
+        public string? adminId { get; set; }
+        
+        public bool Isactive { get; set; }
+
+
     }
 }

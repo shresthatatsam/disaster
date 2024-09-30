@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DisasterDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class isactive : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -68,7 +68,11 @@ namespace DisasterDataAccess.Migrations
                     Municipality = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Ward = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhotoBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PhotoBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    updated_at = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    adminId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Isactive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using DisasterModels.Models;
@@ -20,6 +21,16 @@ namespace DisasterDataAccess.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<DisasterViewModel>(entity =>
+            {
+                entity.ToTable("DisasterInformation");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Isactive).HasDefaultValue(true); 
+                entity.Property(e => e.created_at).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            });
+
         }
 
             //protected override void OnModelCreating(ModelBuilder modelBuilder)
