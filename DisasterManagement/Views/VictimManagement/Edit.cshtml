@@ -1,0 +1,166 @@
+﻿@model DisasterViewModel
+<form id="PrintPage">
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"> <b><u> Victim Information</u></b></legend>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name" asp-for="Name" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="age">Age:</label>
+					<input type="text" class="form-control" id="age" asp-for="Age" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+
+				<div class="form-group">
+					<label for="gender">Gender:</label>
+					<select class="form-control" id="gender" asp-for="Gender" readonly>
+						<option value="" disabled selected>Select Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="contactNumber">Contact Number:</label>
+					<input type="tel" class="form-control" id="contactNumber" asp-for="ContactNumber" readonly>
+				</div>
+			</div>
+		</div>
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Disaster Information</u></b></legend>
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="category">Category:</label>
+					<input type="text" class="form-control" id="category" asp-for="Category" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="severity">Severity:</label>
+					<input type="text" class="form-control" id="severity" asp-for="Severity" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="dateOccured">Date Occurred:</label>
+					<input type="date" class="form-control" id="dateOccured" asp-for="Date_Occured" readonly>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Location Information </u></b></legend>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="tole">Tole:</label>
+					<input type="text" class="form-control" id="tole" asp-for="Tole" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="province">Province:</label>
+					<input type="text" class="form-control" id="province" asp-for="Province" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="district">District:</label>
+					<input type="text" class="form-control" id="district" asp-for="District" readonly>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="municipality">Municipality:</label>
+					<input type="text" class="form-control" id="municipality" asp-for="Municipality" readonly>
+				</div>
+			</div>
+			<div class="col-md-6">
+
+
+				<div class="form-group">
+					<label for="ward">Ward:</label>
+					<input type="text" class="form-control" id="ward" asp-for="Ward" readonly>
+				</div>
+			</div>
+		</div>
+
+
+
+	</fieldset>
+
+	<fieldset class="border p-4 mb-2 rounded shadow">
+		<legend class="w-auto font-weight-bold text-uppercase"><b><u> Photo Information </u></b></legend>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="image-gallery">
+					<h3>Uploaded Photos:</h3>
+					<div id="imagePreviewContainer" class="d-flex flex-wrap">
+						@if (Model.PhotoBase64 != null && Model.PhotoBase64.Any())
+						{
+							foreach (var base64Image in Model.PhotoBase64)
+							{
+								<div class="image-preview mr-2 mb-2">
+									<img src="@($"data:image/jpeg;base64,{base64Image}")" alt="Uploaded Image" class="img-thumbnail" style="max-width: 200px; max-height: 200px;" />
+								</div>
+							}
+						}
+						else
+						{
+							<p>No images uploaded.</p>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<textarea class="form-control" id="description" asp-for="Description" rows="4" readonly></textarea>
+				</div>
+			</div>
+		</div>
+
+
+	</fieldset>
+
+	<button type="button" class="btn btn-primary">Update</button>
+	<button type="button" class="btn btn-primary">
+		<a asp-controller="VictimManagement" asp-action="Index" class="btn btn-primary">Back to Victim Profile</a>
+	
+	</button>
+</form>
+
+
+
+
+
