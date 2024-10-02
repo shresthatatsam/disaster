@@ -13,5 +13,7 @@ namespace DisasterDataAccess.Services.Repositary
         string ResourceDeployed();
         string ActiveCases();
         List<DisasterViewModel> recentDisaster();
-    }
+      
+
+	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisasterModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace DisasterDataAccess.Services.Repositary
 {
     public interface IVictim
     {
-    }
+		DisasterPhotos GetById(Guid id);
+		//DisasterViewModel update(DisasterViewModel model);
+		Task<DisasterViewModel> Edit(DisasterViewModel model);
+	}
 }

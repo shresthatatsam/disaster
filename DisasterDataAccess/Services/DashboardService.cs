@@ -54,6 +54,6 @@ namespace DisasterDataAccess.Services
             return data;
         }
 
-
-    }
+		
+	}
 }

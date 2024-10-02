@@ -1,19 +1,19 @@
 ﻿@model DisasterViewModel
-<form id="PrintPage">
+<form id="PrintPage" method="post" asp-controller="VictimManagement" asp-action="Edit" enctype="multipart/form-data">
 	<fieldset class="border p-4 mb-2 rounded shadow">
 		<legend class="w-auto font-weight-bold text-uppercase"> <b><u> Victim Information</u></b></legend>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type="text" class="form-control" id="name" asp-for="Name" readonly>
+					<input type="text" class="form-control" id="name" asp-for="Name" >
 				</div>
 			</div>
 
 			<div class="col-md-2">
 				<div class="form-group">
 					<label for="age">Age:</label>
-					<input type="text" class="form-control" id="age" asp-for="Age" readonly>
+					<input type="text" class="form-control" id="age" asp-for="Age" >
 				</div>
 			</div>
 
@@ -21,7 +21,7 @@
 
 				<div class="form-group">
 					<label for="gender">Gender:</label>
-					<select class="form-control" id="gender" asp-for="Gender" readonly>
+					<select class="form-control" id="gender" asp-for="Gender" >
 						<option value="" disabled selected>Select Gender</option>
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
@@ -33,7 +33,7 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="contactNumber">Contact Number:</label>
-					<input type="tel" class="form-control" id="contactNumber" asp-for="ContactNumber" readonly>
+					<input type="tel" class="form-control" id="contactNumber" asp-for="ContactNumber" >
 				</div>
 			</div>
 		</div>
@@ -49,21 +49,21 @@
 			<div class="col-md-3">
 				<div class="form-group">
 					<label for="category">Category:</label>
-					<input type="text" class="form-control" id="category" asp-for="Category" readonly>
+					<input type="text" class="form-control" id="category" asp-for="Category" >
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group">
 					<label for="severity">Severity:</label>
-					<input type="text" class="form-control" id="severity" asp-for="Severity" readonly>
+					<input type="text" class="form-control" id="severity" asp-for="Severity" >
 				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="dateOccured">Date Occurred:</label>
-					<input type="date" class="form-control" id="dateOccured" asp-for="Date_Occured" readonly>
+					<input type="date" class="form-control" id="dateOccured" asp-for="Date_Occured" >
 				</div>
 			</div>
 		</div>
@@ -79,21 +79,21 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="tole">Tole:</label>
-					<input type="text" class="form-control" id="tole" asp-for="Tole" readonly>
+					<input type="text" class="form-control" id="tole" asp-for="Tole" >
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="province">Province:</label>
-					<input type="text" class="form-control" id="province" asp-for="Province" readonly>
+					<input type="text" class="form-control" id="province" asp-for="Province" >
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="district">District:</label>
-					<input type="text" class="form-control" id="district" asp-for="District" readonly>
+					<input type="text" class="form-control" id="district" asp-for="District" >
 				</div>
 			</div>
 		</div>
@@ -102,7 +102,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="municipality">Municipality:</label>
-					<input type="text" class="form-control" id="municipality" asp-for="Municipality" readonly>
+					<input type="text" class="form-control" id="municipality" asp-for="Municipality" >
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -110,7 +110,7 @@
 
 				<div class="form-group">
 					<label for="ward">Ward:</label>
-					<input type="text" class="form-control" id="ward" asp-for="Ward" readonly>
+					<input type="text" class="form-control" id="ward" asp-for="Ward" >
 				</div>
 			</div>
 		</div>
@@ -145,7 +145,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label for="description">Description:</label>
-					<textarea class="form-control" id="description" asp-for="Description" rows="4" readonly></textarea>
+					<textarea class="form-control" id="description" asp-for="Description" rows="4" ></textarea>
 				</div>
 			</div>
 		</div>
@@ -153,12 +153,29 @@
 
 	</fieldset>
 
-	<button type="button" class="btn btn-primary">Update</button>
+	<button type="submit" class="btn btn-primary">Update Report</button>
 	<button type="button" class="btn btn-primary">
 		<a asp-controller="VictimManagement" asp-action="Index" class="btn btn-primary">Back to Victim Profile</a>
-	
+
 	</button>
+	@* <button type="button" class="btn btn-primary" onclick="printPage()">Print Page</button> *@
 </form>
+
+
+
+@* <script>
+	function printPage() {
+		window.print();
+	}
+</script> *@
+
+
+
+
+
+
+
+
 
 
 

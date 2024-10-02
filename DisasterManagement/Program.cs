@@ -14,6 +14,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IDisaster, DisasterService>();
 builder.Services.AddScoped<IDashboard, DashboardService>();
+builder.Services.AddScoped<IVictim, VictimService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
